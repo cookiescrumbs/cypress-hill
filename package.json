@@ -1,0 +1,34 @@
+{
+  "name": "cypress-hill",
+  "version": "0.0.1",
+  "description": "Command line helper for the testing framework Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint ./"
+  },
+  "bin": {
+    "cypress-hill": "./src/cli.js",
+    "ch": "./src/cli.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookiescrumbs/cypress-hill.git"
+  },
+  "keywords": [
+    "cypress",
+    "testing",
+    "automation"
+  ],
+  "author": "Steven Cook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cookiescrumbs/cypress-hill/issues"
+  },
+  "homepage": "https://github.com/cookiescrumbs/cypress-hill#readme",
+  "devDependencies": {
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
