@@ -2,14 +2,15 @@
   "name": "cypress-hill",
   "version": "0.0.1",
   "description": "Command line helper for the testing framework Cypress",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "./node_modules/.bin/eslint ./"
+    "build": "tsc -p ./",
+    "dev": "tsc --watch",
+    "test": "jest"
   },
   "bin": {
-    "cypress-hill": "./src/cli.js",
-    "ch": "./src/cli.js"
+    "cypress-hill": "./dist/cli.js",
+    "ch": "./dist/cli.js"
   },
   "repository": {
     "type": "git",
@@ -27,8 +28,15 @@
   },
   "homepage": "https://github.com/cookiescrumbs/cypress-hill#readme",
   "devDependencies": {
-    "eslint": "^5.14.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0"
+    "@types/jest": "^24.0.11",
+    "@types/node": "^11.10.4",
+    "jest": "^24.5.0",
+    "ts-jest": "^24.0.0",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "@types/shelljs": "^0.8.3",
+    "shelljs": "^0.8.3"
   }
 }
