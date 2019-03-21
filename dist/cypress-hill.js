@@ -6,15 +6,25 @@ class CypressHill {
         this._env = env || 'dev';
     }
     open() {
-        return `CYPRESS_environment=${this._env} CYPRESS_baseUrl=${this._replaceBaseUrlEnv()} ./node_modules/.bin/cypress open`;
+        return `${this._buildCommand()} open`;
     }
     run() {
-        console.log(this._env);
-        return `CYPRESS_environment=${this._env} CYPRESS_baseUrl=${this._replaceBaseUrlEnv()} ./node_modules/.bin/cypress run`;
+        return `${this._buildCommand()} run`;
     }
     _replaceBaseUrlEnv() {
-        console.log();
         return this._baseUrl.replace('{{env}}', this._env);
+    }
+    _envVar() {
+        return `CYPRESS_environment=${this._env}`;
+    }
+    _baseUrlVar() {
+        return `CYPRESS_baseUrl=${this._replaceBaseUrlEnv()}`;
+    }
+    _cypressBinLocation() {
+        return './node_modules/.bin/cypress';
+    }
+    _buildCommand() {
+        return `${this._envVar()} ${this._baseUrlVar()} ${this._cypressBinLocation()}`;
     }
 }
 exports.CypressHill = CypressHill;

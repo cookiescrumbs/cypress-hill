@@ -17,15 +17,31 @@ export class CypressHill {
   }
 
   public open(): string {
-    return `CYPRESS_environment=${this._env} CYPRESS_baseUrl=${this._replaceBaseUrlEnv()} ./node_modules/.bin/cypress open`;
+    return `${this._buildCommand()} open`;
   }
 
   public run(): string { 
-    return `CYPRESS_environment=${this._env} CYPRESS_baseUrl=${this._replaceBaseUrlEnv()} ./node_modules/.bin/cypress run`;
+    return `${this._buildCommand()} run`;
   }
 
   private _replaceBaseUrlEnv(): string {
     return this._baseUrl.replace('{{env}}', this._env);
+  }
+
+  private _envVar(): string { 
+     return `CYPRESS_environment=${this._env}`
+  }
+
+  private _baseUrlVar(): string { 
+    return `CYPRESS_baseUrl=${this._replaceBaseUrlEnv()}`;
+  }
+
+  private _cypressBinLocation(): string { 
+    return './node_modules/.bin/cypress';
+  }
+
+  private _buildCommand(): string { 
+    return `${this._envVar()} ${this._baseUrlVar()} ${this._cypressBinLocation()}`;
   }
 
 }
