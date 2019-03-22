@@ -28,7 +28,7 @@ describe('CypressHill', () => {
         });
     });
 
-    describe.only('.run("stage")', () => {
+    describe('.run("stage")', () => {
         test('return string containing the baseUrl, stage baseurl, environment and the run command', () => {
             const ch = new CypressHill(conf, 'stage');
             expect(ch.run()).toBe('CYPRESS_environment=stage CYPRESS_baseUrl=https://blah.stage.blah.com ./node_modules/.bin/cypress run');
