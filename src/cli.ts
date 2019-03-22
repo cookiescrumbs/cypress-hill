@@ -38,8 +38,8 @@ function jsonParse(json: string): Promise<HashMapofAppConf> {
 }
 
 readConfigFile(configLoc)
-.then((blah) => {
-    return jsonParse(blah);
+.then((stringConfig) => {
+    return jsonParse(stringConfig);
 })
 .then((conf) => {
     const appConf: AppConf = conf[args[1]];
