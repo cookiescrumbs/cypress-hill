@@ -4,7 +4,7 @@ import * as fs  from 'fs';
 import { CypressHill } from './cypress-hill';
 
 const Console = console;
-const configLoc: string = 'src/__tests__/fixtures/ch.json';
+const configLoc: string = 'ch.json';
 const [, , ...args] = process.argv;
 
 interface HashMapofAppConf {
