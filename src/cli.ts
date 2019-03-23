@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as shell from 'shelljs';
 import * as fs  from 'fs';
-import {CypressHill} from './cypress-hill';
+import { CypressHill } from './cypress-hill';
 
 const Console = console;
 const configLoc: string = 'src/__tests__/fixtures/ch.json';
@@ -15,7 +15,7 @@ interface AppConf {
     baseUrl: string
 }
 
-function readConfigFile(configLoc: string) {
+function readConfigFile(configLoc: string): Promise<string> {
     return new Promise((resolve, reject) => {
         fs.readFile(configLoc, 'utf8', (error, data) => {
             if (error) {
