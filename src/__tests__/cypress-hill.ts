@@ -1,10 +1,14 @@
 import {CypressHill} from '../cypress-hill';
+let conf: any; 
 
 describe('CypressHill', () => {
 
-    const conf: any = {
-        baseUrl: 'https://blah.{{env}}.blah.com'
-    };
+    beforeEach(() => {
+        conf = {
+            baseUrl: 'https://blah.{{env}}.blah.com',
+            specs: './e2e/cypress/integration/blah/blah/**/*'
+        };
+    });
     
     
     describe('.open()', () => {
@@ -24,18 +28,31 @@ describe('CypressHill', () => {
     describe('.run()', () => {
         test('return string containing the baseUrl, default "dev" environment and the run command', () => {
             const ch = new CypressHill(conf);
-            expect(ch.run()).toBe('CYPRESS_environment=dev CYPRESS_baseUrl=https://blah.dev.blah.com ./node_modules/.bin/cypress run');
+            expect(ch.run()).toBe('CYPRESS_environment=dev CYPRESS_baseUrl=https://blah.dev.blah.com ./node_modules/.bin/cypress run --spec ./e2e/cypress/integration/blah/blah/**/*');
         });
     });
 
     describe('.run("stage")', () => {
-        test('return string containing the baseUrl, stage baseurl, environment and the run command', () => {
+        test('return string containing the baseUrl, stage baseurl, environment, driectory to the specs and the run command', () => {
             const ch = new CypressHill(conf, 'stage');
-            expect(ch.run()).toBe('CYPRESS_environment=stage CYPRESS_baseUrl=https://blah.stage.blah.com ./node_modules/.bin/cypress run');
+            expect(ch.run()).toBe('CYPRESS_environment=stage CYPRESS_baseUrl=https://blah.stage.blah.com ./node_modules/.bin/cypress run --spec ./e2e/cypress/integration/blah/blah/**/*');
         });
     });
 
+    describe('config has no spec location', () => {
+        beforeEach(() => {
+           conf= {
+                baseUrl: 'https://blah.{{env}}.blah.com'
+            };
+        });
 
+        describe('.run()', () => {
+            test('return run command without the location to the specs', () => {
+                const ch = new CypressHill(conf);
+                expect(ch.run()).toBe('CYPRESS_environment=dev CYPRESS_baseUrl=https://blah.dev.blah.com ./node_modules/.bin/cypress run');
+            });
+        });
+    });
 });
 
 

@@ -1,17 +1,20 @@
 {
   "name": "cypress-hill",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Command line helper for the testing framework Cypress",
-  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc -p ./",
     "dev": "tsc --watch",
     "test": "jest"
   },
+  "main": "./dist/cli.js",
   "bin": {
     "cypress-hill": "./dist/cli.js",
     "ch": "./dist/cli.js"
   },
+  "files": [
+    "dist/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cookiescrumbs/cypress-hill.git"

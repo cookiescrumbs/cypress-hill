@@ -3,17 +3,20 @@ interface HashMapofAppConf {
 }
 
 interface AppConf {
-    baseUrl: string
+    baseUrl: string,
+    specs?: string
 }
 
 export class CypressHill {
 
   private _baseUrl: string;
+  private _spec: string | undefined;
   private _env: string;
 
-  constructor(conf: AppConf, env?: string | false) {
+  constructor(conf: AppConf, env = 'dev') {
     this._baseUrl = conf.baseUrl;
-    this._env = env || 'dev';
+    this._spec = conf.specs;
+    this._env = env;
   }
 
   public open(): string {
@@ -21,7 +24,7 @@ export class CypressHill {
   }
 
   public run(): string { 
-    return `${this._buildCommand()} run`;
+    return `${this._buildCommand()} run${this._getSpec()}`;
   }
 
   private _replaceBaseUrlEnv(): string {
@@ -29,7 +32,7 @@ export class CypressHill {
   }
 
   private _envVar(): string { 
-     return `CYPRESS_environment=${this._env}`
+    return `CYPRESS_environment=${this._env}`
   }
 
   private _baseUrlVar(): string { 
@@ -42,6 +45,10 @@ export class CypressHill {
 
   private _buildCommand(): string { 
     return `${this._envVar()} ${this._baseUrlVar()} ${this._cypressBinLocation()}`;
+  }
+
+  private _getSpec(): string {
+    return (this._spec)? ` --spec ${this._spec}` : '';
   }
 
 }

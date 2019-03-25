@@ -4,7 +4,7 @@ import * as fs  from 'fs';
 import { CypressHill } from './cypress-hill';
 
 const Console = console;
-const configLoc: string = 'ch.json';
+const configLoc: string = 'ch.config.json';
 const [, , ...args] = process.argv;
 
 interface HashMapofAppConf {
@@ -12,7 +12,8 @@ interface HashMapofAppConf {
 }
 
 interface AppConf {
-    baseUrl: string
+    baseUrl: string,
+    specs?: string
 }
 
 function readConfigFile(configLoc: string): Promise<string> {
@@ -52,5 +53,3 @@ readConfigFile(configLoc)
 .catch((error) => {
     Console.error(error.message);
 });
-
-

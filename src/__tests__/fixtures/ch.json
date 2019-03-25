@@ -1,5 +1,0 @@
-{
-    "teacher": {
-        "baseUrl": "https://teacher.{{env}}.ctx.ef.com"
-    }
-}

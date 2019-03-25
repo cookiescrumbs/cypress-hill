@@ -1,0 +1,6 @@
+{
+    "teacher": {
+        "baseUrl": "https://teacher.{{env}}.ctx.ef.com",
+        "specs": "./e2e/cypress/integration/teacher/**/*"
+    }
+}
