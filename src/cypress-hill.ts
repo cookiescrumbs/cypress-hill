@@ -6,10 +6,10 @@ export class CypressHill {
   private _spec: string | undefined;
   private _env: string;
 
-  constructor(conf: AppConf, env = 'dev') {
+  constructor(conf: AppConf, env?: string) {
     this._baseUrl = conf.baseUrl;
     this._spec = conf.specs;
-    this._env = env;
+    this._env = env || 'dev';
   }
 
   public open(): string {
