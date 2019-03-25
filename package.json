@@ -1,6 +1,6 @@
 {
   "name": "cypress-hill",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Command line helper for the testing framework Cypress",
   "scripts": {
     "build": "tsc -p ./",
