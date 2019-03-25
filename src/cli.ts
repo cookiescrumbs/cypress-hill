@@ -1,20 +1,13 @@
 #!/usr/bin/env node
 import * as shell from 'shelljs';
 import * as fs  from 'fs';
+import { HashMapofAppConf, AppConf } from './common/types';
 import { CypressHill } from './cypress-hill';
+
 
 const Console = console;
 const configLoc: string = 'ch.config.json';
 const [, , ...args] = process.argv;
-
-interface HashMapofAppConf {
-    [key: string]: AppConf;
-}
-
-interface AppConf {
-    baseUrl: string,
-    specs?: string
-}
 
 function readConfigFile(configLoc: string): Promise<string> {
     return new Promise((resolve, reject) => {

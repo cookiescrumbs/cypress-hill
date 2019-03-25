@@ -1,5 +1,7 @@
 import {CypressHill} from '../cypress-hill';
-let conf: any; 
+import { AppConf } from '../common/types';
+
+let conf: AppConf; 
 
 describe('CypressHill', () => {
 

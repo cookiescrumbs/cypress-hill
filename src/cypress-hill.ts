@@ -1,11 +1,4 @@
-interface HashMapofAppConf {
-  [key: string]: AppConf;
-}
-
-interface AppConf {
-    baseUrl: string,
-    specs?: string
-}
+import { AppConf } from './common/types';
 
 export class CypressHill {
 
