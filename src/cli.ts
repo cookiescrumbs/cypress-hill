@@ -36,9 +36,7 @@ readConfigFile(configLoc)
     return jsonParse(stringConfig);
 })
 .then((conf) => {
-
     const appConf: AppConf = conf[args[1]];
-    console.log(args[2]);
     const appEnv: string = args[2];
     const action: string = args[0];
     const app = new CypressHill(appConf, appEnv);

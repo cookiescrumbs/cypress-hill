@@ -17,10 +17,12 @@ export class CypressHill {
   }
 
   public run(): string { 
+    console.log(`${this._buildCommand()} run${this._getSpec()}`);
     return `${this._buildCommand()} run${this._getSpec()}`;
   }
 
   private _replaceBaseUrlEnv(): string {
+
     return this._baseUrl.replace('{{env}}', this._env);
   }
 
@@ -41,7 +43,7 @@ export class CypressHill {
   }
 
   private _getSpec(): string {
-    return (this._spec)? ` --spec ${this._spec}` : '';
+    return (this._spec)? ` --spec '${this._spec}'` : '';
   }
 
 }
