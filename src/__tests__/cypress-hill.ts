@@ -27,6 +27,13 @@ describe('CypressHill', () => {
         });
     });
 
+    describe('.open("live")', () => {
+        test('return string containing the live environment, live baseurl and the open command', () => {
+            const ch = new CypressHill(conf, 'live');
+            expect(ch.open()).toBe('CYPRESS_environment=live CYPRESS_baseUrl=https://blah.blah.com ./node_modules/.bin/cypress open');
+        });
+    });
+
     describe('.run()', () => {
         test('return string containing the baseUrl, default "dev" environment and the run command', () => {
             const ch = new CypressHill(conf);
@@ -55,6 +62,8 @@ describe('CypressHill', () => {
             });
         });
     });
+
+    
 });
 
 

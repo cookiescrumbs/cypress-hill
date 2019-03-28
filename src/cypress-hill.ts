@@ -1,5 +1,9 @@
 import { AppConf } from './common/types';
 
+enum ENVIRONMENTS {
+  LIVE = 'live'
+}
+
 export class CypressHill {
 
   private _baseUrl: string;
@@ -22,7 +26,9 @@ export class CypressHill {
   }
 
   private _replaceBaseUrlEnv(): string {
-
+    if (this._env === ENVIRONMENTS.LIVE) { 
+      return this._baseUrl.replace('{{env}}.','');
+    }
     return this._baseUrl.replace('{{env}}', this._env);
   }
 
